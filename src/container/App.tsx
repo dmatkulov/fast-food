@@ -1,4 +1,4 @@
-import {Item} from '../types';
+import {Menu, Item} from '../types';
 import MenuList from '../components/MenuList/MenuList';
 import './App.css';
 
@@ -8,26 +8,55 @@ import friesImg from '../assets/fries.jpeg';
 import colaImg from '../assets/cola.jpeg';
 import teaImg from '../assets/tea.jpeg';
 import coffeeImg from '../assets/coffee.jpeg';
+import {useState} from 'react';
+import OrderItem from '../components/OrderItem/OrderItem';
 
 
 const MENU_LIST: Item[] = [
   {name: 'Hamburger', price: 80, image: hamburgerImg},
-  {name: 'Cheeseburger', price: 80, image: cheeseburgerImg},
-  {name: 'Fries', price: 80, image: friesImg},
-  {name: 'Cola', price: 80, image: colaImg},
-  {name: 'Tea', price: 80, image: teaImg},
-  {name: 'Coffee', price: 80, image: coffeeImg},
+  {name: 'Cheeseburger', price: 90, image: cheeseburgerImg},
+  {name: 'Fries', price: 45, image: friesImg},
+  {name: 'Coffee', price: 70, image: coffeeImg},
+  {name: 'Tea', price: 50, image: teaImg},
+  {name: 'Cola', price: 85, image: colaImg},
 ];
 
 function App() {
+  const [orders, setOrders] = useState<Menu[]>([
+    {name: 'Hamburger', count: 0},
+    {name: 'Cheeseburger', count: 0},
+    {name: 'Fries', count: 0},
+    {name: 'Coffee', count: 0},
+    {name: 'Tea', count: 0},
+    {name: 'Cola', count: 0},
+  ]);
   const addToOrderList = (index: number) => {
+    setOrders((prevState) => {
+      return prevState.map((food, i) => {
+        if (index === i) {
+          return {...food, count: food.count + 1};
+        }
+        return food;
+      });
+    });
+  };
+
+  const onRemoFromOrderList = (index: number) => {
     console.log(index);
   };
 
   return (
-    <>
-      <MenuList menu={MENU_LIST} onAdd={(index) => addToOrderList(index)}/>
-    </>
+    <div>
+      <div className="col">
+        {orders.map((order, index) => (
+
+        <OrderItem items={MENU_LIST} menu={order} key={index} onRemove={() => onRemoFromOrderList(index)} />
+        ))}
+      </div>
+      <div className="col">
+        <MenuList menu={MENU_LIST} onAdd={(index) => addToOrderList(index)}/>
+      </div>
+    </div>
   );
 }
 
