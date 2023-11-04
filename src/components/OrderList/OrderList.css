@@ -4,3 +4,13 @@
     padding: 12px;
     box-sizing: border-box;
 }
+
+.order-list > p {
+    margin: 10px 0;
+}
+
+.total-price {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -7,6 +7,7 @@ interface Props {
   items: Item[];
   onAdd: (id: number) => void;
 }
+
 const MenuList: React.FC<Props> = ({items, onAdd}) => {
   return (
     <div className="menu-list">

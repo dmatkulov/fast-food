@@ -11,25 +11,28 @@ interface Props {
 const OrderItem: React.FC<Props> = ({items, order, onOrderClick}) => {
   return (
     <>
-        <div
-          className="order-item">
-          <p>{order.name}</p>
-          <p>×{order.count}</p>
-
-          {items.reduce((acc , item) => {
+      <div
+        className="order-item">
+        <p className="order-title">{order.name}</p>
+        <p className="order-count">×{order.count}</p>
+        
+        <p className="order-price">
+          {items.reduce((acc, item) => {
             if (item.name === order.name) {
               return acc + item.price * order.count;
             }
             return acc;
           }, 0)} KGS
-
-          <button
-              className="remove-btn"
-              onClick={onOrderClick}
-          >
-            Remove
-          </button>
-        </div>
+        </p>
+        
+        
+        <button
+          className="remove-btn"
+          onClick={onOrderClick}
+        >
+          Remove
+        </button>
+      </div>
     </>
   );
 };

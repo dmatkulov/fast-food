@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import OrderList from "../components/OrderList/OrderList";
+import OrderList from '../components/OrderList/OrderList';
 import MenuList from '../components/MenuList/MenuList';
 import {Menu, Item} from '../types';
 import './App.css';
@@ -12,7 +12,7 @@ import teaImg from '../assets/tea.jpeg';
 import coffeeImg from '../assets/coffee.jpeg';
 
 
-const MENU_LIST: Item[] = [
+const MENU_ITEMS: Item[] = [
   {id: 1, name: 'Hamburger', price: 80, image: hamburgerImg},
   {id: 2, name: 'Cheeseburger', price: 90, image: cheeseburgerImg},
   {id: 3, name: 'Fries', price: 45, image: friesImg},
@@ -40,43 +40,44 @@ function App() {
       });
     });
   };
-
+  
   const onRemoFromOrderList = (orderID: number) => {
     setOrders((prevState) => {
       return prevState.map((food) => {
         if (food.id === orderID && food.count > 0) {
-          return { ...food, count: food.count - 1 };
+          return {...food, count: food.count - 1};
         }
         return food;
       });
     });
   };
-
-  const totalPrice = MENU_LIST.reduce((total, item) => {
+  
+  const totalPrice = MENU_ITEMS.reduce((total, item) => {
     const ordersCount = orders.filter((order) => order.name === item.name);
     const count = ordersCount.length > 0 ? ordersCount[0].count : 0;
     return total + (count * item.price);
   }, 0);
-
+  
   return (
     <div className="App">
-      <div className="col">
+      <div className="col-1">
         <h2 className="title">Order Details:</h2>
         <OrderList
           orders={orders}
-          items={MENU_LIST}
+          items={MENU_ITEMS}
           onRemove={(id) => onRemoFromOrderList(id)}
           total={totalPrice}
         />
       </div>
-      <div className="col">
+      <div className="col-2">
         <h2 className="title">Add items:</h2>
         <MenuList
-          items={MENU_LIST}
+          items={MENU_ITEMS}
           onAdd={(id) => addToOrderList(id)}
         />
       </div>
     </div>
   );
 }
+
 export default App;

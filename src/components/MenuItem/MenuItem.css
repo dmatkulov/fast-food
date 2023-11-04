@@ -8,6 +8,7 @@
   align-items: center;
   border: none;
   padding: 10px;
+  cursor: pointer;
 }
 
 .food-img {

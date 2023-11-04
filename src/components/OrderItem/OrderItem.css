@@ -1,16 +1,37 @@
 .order-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #eeeeee;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    align-items: center;
-    text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeeee;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  text-align: left;
+  margin: 10px 0;
 }
 
 .order-item > p {
-    margin: 0;
+  margin: 0 10px 0 0;
+  font-size: 14px;
+}
+
+.order-title {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.order-price {
+  font-size: 12px;
+  width: 100%;
 }
 
 .remove-btn {
-    margin-left: 20px;
+  background: url("../../assets/delete-icon.svg") center / contain no-repeat;
+  border: none;
+  overflow: hidden;
+  text-indent: 130%;
+  padding: 4px;
+  display: inline-block;
+  width: 24px;
+  justify-self: flex-end;
+  cursor: pointer;
 }
