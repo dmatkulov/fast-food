@@ -4,21 +4,21 @@ import './OrderItem.css';
 
 interface Props {
   items: Item[];
-  menu: Menu;
+  order: Menu;
   onOrderClick: React.MouseEventHandler;
 }
 
-const OrderItem: React.FC<Props> = ({items, menu, onOrderClick}) => {
+const OrderItem: React.FC<Props> = ({items, order, onOrderClick}) => {
   return (
     <>
         <div
           className="order-item">
-          <p>{menu.name}</p>
-          <p>×{menu.count}</p>
+          <p>{order.name}</p>
+          <p>×{order.count}</p>
 
           {items.reduce((acc , item) => {
-            if (item.name === menu.name) {
-              return acc + item.price * menu.count;
+            if (item.name === order.name) {
+              return acc + item.price * order.count;
             }
             return acc;
           }, 0)} KGS

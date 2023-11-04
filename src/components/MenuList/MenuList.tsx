@@ -4,14 +4,18 @@ import MenuItem from '../MenuItem/MenuItem';
 import './MenuList.css';
 
 interface Props {
-  menu: Item[];
-  onAdd: (index: number) => void;
+  items: Item[];
+  onAdd: (id: number) => void;
 }
-const MenuList: React.FC<Props> = ({menu, onAdd}) => {
+const MenuList: React.FC<Props> = ({items, onAdd}) => {
   return (
     <div className="menu-list">
-      {menu.map((food, index) => (
-        <MenuItem item={food} key={index} onItemClick={() => onAdd(index)}/>
+      {items.map((order) => (
+        <MenuItem
+          key={order.id}
+          item={order}
+          onItemClick={() => onAdd(order.id)}
+        />
       ))}
     </div>
   );

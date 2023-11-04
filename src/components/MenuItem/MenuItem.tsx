@@ -12,10 +12,12 @@ const MenuItem: React.FC<Props> = ({item, onItemClick}) => {
       <button
         className="add-item-btn"
         onClick={onItemClick}>
+
         <img
           className="food-img"
           src={item.image}
           alt={item.name}/>
+
         <div className="food-info">
           <h4>{item.name}</h4>
           <p>Price: {item.price}</p>

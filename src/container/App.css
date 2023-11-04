@@ -1,6 +1,19 @@
 #root {
-  max-width: 1280px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.col  {
+  padding: 20px;
 }

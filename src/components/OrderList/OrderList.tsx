@@ -1,31 +1,34 @@
 import React from 'react';
 import OrderItem from '../OrderItem/OrderItem';
 import {Menu, Item} from "../../types";
+import './OrderList.css';
 
 interface Props {
     items: Item[];
     orders: Menu[];
-    onRemove: (index: number) => void;
+    onRemove: (id: number) => void;
+    total: number;
 }
 
-const OrderList: React.FC<Props> = ({items, orders, onRemove}) => {
+const OrderList: React.FC<Props> = ({items, orders, onRemove, total}) => {
     const activeOrders = orders.filter(order => order.count > 0);
 
     return (
         <>
             {activeOrders.length > 0 ? (
-                <div>
-                    {activeOrders.map((order, index) => (
+                <div className="order-list">
+                    {activeOrders.map((order) => (
                         <OrderItem
-                            key={index}
-                            menu={order}
+                            key={order.id}
+                            order={order}
                             items={items}
-                            onOrderClick={() => onRemove(index)}
+                            onOrderClick={() => onRemove(order.id)}
                         />
                     ))}
+                    <div>Total price: {total}</div>
                 </div>
             ) : (
-                <div>
+                <div className="order-list">
                     <p>Order list is empty!</p>
                     <p>Please add some items</p>
                 </div>
