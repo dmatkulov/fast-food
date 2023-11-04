@@ -1,0 +1,26 @@
+.add-item-btn {
+  background: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  text-align: left;
+  align-items: center;
+  border: none;
+}
+
+.food-img {
+  width: 100px;
+}
+
+.food-info > h4 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.food-info > p {
+  margin: 0;
+  font-size: 18px;
+  color: dimgray;
+}
