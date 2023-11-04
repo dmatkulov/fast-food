@@ -1,8 +1,8 @@
 import React from 'react';
-import {MenuItem} from '../../types';
+import {Item} from '../../types';
 
 interface Props {
-  item: MenuItem;
+  item: Item;
   onItemClick: React.MouseEventHandler;
 }
 const MenuItem: React.FC<Props> = ({item, onItemClick}) => {
