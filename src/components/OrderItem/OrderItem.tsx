@@ -1,29 +1,35 @@
 import React from 'react';
 import {Menu, Item} from '../../types';
+import './OrderItem.css';
 
 interface Props {
   items: Item[];
   menu: Menu;
-  onRemove: (index: number) => void;
+  onOrderClick: React.MouseEventHandler;
 }
 
-const OrderItem: React.FC<Props> = ({items, menu, onRemove}) => {
+const OrderItem: React.FC<Props> = ({items, menu, onOrderClick}) => {
   return (
     <>
-        <li
+        <div
           className="order-item">
-          <span>{menu.name}</span>
-          <span>x{menu.count}</span>
-          <div>
-            {items.reduce((acc , item) => {
-              if (item.name === menu.name) {
-                return acc + item.price * menu.count;
-              }
-              return acc;
-            }, 0)} KGS
-            <button onClick={() => onRemove}>Remove</button>
-          </div>
-        </li>
+          <p>{menu.name}</p>
+          <p>×{menu.count}</p>
+
+          {items.reduce((acc , item) => {
+            if (item.name === menu.name) {
+              return acc + item.price * menu.count;
+            }
+            return acc;
+          }, 0)} KGS
+
+          <button
+              className="remove-btn"
+              onClick={onOrderClick}
+          >
+            Remove
+          </button>
+        </div>
     </>
   );
 };

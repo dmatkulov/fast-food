@@ -1,5 +1,7 @@
-import {Menu, Item} from '../types';
+import {useState} from 'react';
+import OrderList from "../components/OrderList/OrderList";
 import MenuList from '../components/MenuList/MenuList';
+import {Menu, Item} from '../types';
 import './App.css';
 
 import hamburgerImg from '../assets/haburger.jpeg';
@@ -8,8 +10,6 @@ import friesImg from '../assets/fries.jpeg';
 import colaImg from '../assets/cola.jpeg';
 import teaImg from '../assets/tea.jpeg';
 import coffeeImg from '../assets/coffee.jpeg';
-import {useState} from 'react';
-import OrderItem from '../components/OrderItem/OrderItem';
 
 
 const MENU_LIST: Item[] = [
@@ -48,10 +48,7 @@ function App() {
   return (
     <div>
       <div className="col">
-        {orders.map((order, index) => (
-
-        <OrderItem items={MENU_LIST} menu={order} key={index} onRemove={() => onRemoFromOrderList(index)} />
-        ))}
+       <OrderList orders={orders} items={MENU_LIST} onRemove={(index) => onRemoFromOrderList(index)}/>
       </div>
       <div className="col">
         <MenuList menu={MENU_LIST} onAdd={(index) => addToOrderList(index)}/>

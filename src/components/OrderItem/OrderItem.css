@@ -1,0 +1,16 @@
+.order-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: left;
+}
+
+.order-item > p {
+    margin: 0;
+}
+
+.remove-btn {
+    margin-left: 20px;
+}
